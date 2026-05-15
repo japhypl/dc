@@ -1,0 +1,1 @@
+import{n as e,o as t,s as n}from"./index-CwyZArIO.js";var r=class{constructor(e){n(this,e)}render(){return t(e,null,t(`slot`,null))}};export{r as scale_ssr_slot_fix};

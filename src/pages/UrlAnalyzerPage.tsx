@@ -41,7 +41,7 @@ export function UrlAnalyzerPage() {
               <PieChart>
                 <Pie data={chartData} dataKey="value" nameKey="name" outerRadius={80} label />
                 {chartData.map((entry) => <Cell key={entry.name} fill={`var(--chart-${entry.name.toLowerCase()})`} />)}
-                <Tooltip formatter={(value: number) => formatPercent(value)} />
+                <Tooltip formatter={(value) => formatPercent(Number(value))} />
               </PieChart>
             </ResponsiveContainer>
           </article>

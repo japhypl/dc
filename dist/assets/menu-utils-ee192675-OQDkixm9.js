@@ -1,0 +1,1 @@
+var e=(t=[],n,r)=>t.reduce((t,i)=>i.id===n?{selected:i,parent:r}:i.children&&i.children.length&&e(i.children,n,i).selected?e(i.children,n,i):t,{selected:null,parent:null}),t=(t,n)=>{let r=e(t,n);for(;r.parent;)r=e(t,r.parent.id);return r.selected};export{e as n,t};

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DC dashboard">
+  <rect width="64" height="64" rx="12" fill="#e20074"/>
+  <path d="M18 18h28v8H18zM18 30h28v8H18zM18 42h28v8H18z" fill="#fff"/>
+  <circle cx="24" cy="22" r="2" fill="#e20074"/>
+  <circle cx="24" cy="34" r="2" fill="#e20074"/>
+  <circle cx="24" cy="46" r="2" fill="#e20074"/>
+</svg>
