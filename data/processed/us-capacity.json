@@ -1,0 +1,42 @@
+{
+  "regionSource": {
+    "regionId": "us",
+    "regionName": "US",
+    "sourceStatus": "external_input_required",
+    "baselineYear": "2025e",
+    "years": [
+      "2025e",
+      "2026f",
+      "2027f",
+      "2028f",
+      "2029f",
+      "2030f"
+    ],
+    "capacityDefinition": "IT load GW",
+    "baseForecastGw": {
+      "2025e": null,
+      "2026f": null,
+      "2027f": null,
+      "2028f": null,
+      "2029f": null,
+      "2030f": null
+    },
+    "highForecastGw": {
+      "2025e": null,
+      "2026f": null,
+      "2027f": null,
+      "2028f": null,
+      "2029f": null,
+      "2030f": null
+    },
+    "qualityFlags": [
+      "External",
+      "?"
+    ],
+    "sourceFiles": [
+      "docs/sources/us.md"
+    ],
+    "comments": "External source input required. The app includes this region in all views, but values remain null until populated."
+  },
+  "countrySources": []
+}

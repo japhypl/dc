@@ -1,0 +1,14 @@
+html[data-mode="dark"], body[data-mode="dark"] {
+  background-color: var(--telekom-color-background-canvas, var(--app-bg));
+  color: var(--telekom-color-text-and-icon-standard, var(--app-text));
+}
+
+.card, .chart-card, .sidebar, .app-header, .markdown-panel, .state-box {
+  background-color: var(--telekom-color-background-surface, var(--app-surface));
+  color: var(--telekom-color-text-and-icon-standard, var(--app-text));
+  border-color: var(--telekom-color-ui-border-standard, var(--app-border));
+}
+
+.badge {
+  border-color: var(--telekom-color-ui-border-standard, var(--app-border));
+}

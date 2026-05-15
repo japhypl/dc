@@ -1,0 +1,71 @@
+{
+  "years": [
+    "2026f",
+    "2027f",
+    "2028f",
+    "2029f",
+    "2030f"
+  ],
+  "baselineYear": "2025e",
+  "primaryUnit": "IT load GW",
+  "regions": [
+    {
+      "id": "us",
+      "name": "US",
+      "countries": [
+        "United States"
+      ],
+      "sourceDoc": "docs/sources/us.md",
+      "includedInTotal": true
+    },
+    {
+      "id": "western-europe",
+      "name": "Western Europe",
+      "countries": [
+        "United Kingdom",
+        "Ireland",
+        "France",
+        "Netherlands",
+        "Belgium",
+        "Luxembourg",
+        "Switzerland"
+      ],
+      "excludes": [
+        "Germany",
+        "Poland",
+        "Austria",
+        "Greece",
+        "Czech Republic",
+        "Hungary",
+        "Slovakia",
+        "Croatia"
+      ],
+      "sourceDoc": "docs/sources/western-europe.md",
+      "includedInTotal": true
+    },
+    {
+      "id": "germany",
+      "name": "Germany",
+      "countries": [
+        "Germany"
+      ],
+      "sourceDoc": "docs/sources/germany.md",
+      "includedInTotal": true
+    },
+    {
+      "id": "central-europe",
+      "name": "Central Europe",
+      "countries": [
+        "Poland",
+        "Austria",
+        "Greece",
+        "Czech Republic",
+        "Hungary",
+        "Slovakia",
+        "Croatia"
+      ],
+      "sourceDoc": "docs/sources/central-europe.md",
+      "includedInTotal": true
+    }
+  ]
+}

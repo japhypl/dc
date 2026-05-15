@@ -1,0 +1,103 @@
+{
+  "version": "0.1.0",
+  "baseLikelihood": {
+    "low": 0.34,
+    "mid": 0.43,
+    "high": 0.23
+  },
+  "rules": [
+    {
+      "id": "announcement_words",
+      "patterns": [
+        "announced",
+        "planned",
+        "proposed",
+        "future campus",
+        "will build"
+      ],
+      "effects": {
+        "low": 0.18,
+        "mid": -0.08,
+        "high": -0.1
+      },
+      "comment": "Future wording tends to indicate unavailable capacity."
+    },
+    {
+      "id": "construction_words",
+      "patterns": [
+        "under construction",
+        "construction started",
+        "broke ground",
+        "groundbreaking"
+      ],
+      "effects": {
+        "low": -0.08,
+        "mid": 0.15,
+        "high": -0.07
+      },
+      "comment": "Construction evidence raises the base case."
+    },
+    {
+      "id": "live_words",
+      "patterns": [
+        "commissioned",
+        "operational",
+        "live",
+        "in service",
+        "revenue producing"
+      ],
+      "effects": {
+        "low": -0.18,
+        "mid": 0.07,
+        "high": 0.11
+      },
+      "comment": "Commissioning and live evidence raise availability likelihood."
+    },
+    {
+      "id": "power_evidence",
+      "patterns": [
+        "grid connection",
+        "substation",
+        "power secured",
+        "ppa",
+        "energized"
+      ],
+      "effects": {
+        "low": -0.06,
+        "mid": 0.08,
+        "high": -0.02
+      },
+      "comment": "Power evidence reduces downside risk."
+    },
+    {
+      "id": "unclear_capacity",
+      "patterns": [
+        "investment",
+        "land",
+        "campus",
+        "acre",
+        "hectare"
+      ],
+      "effects": {
+        "low": 0.08,
+        "mid": -0.02,
+        "high": -0.06
+      },
+      "comment": "Non-capacity metrics increase uncertainty."
+    },
+    {
+      "id": "large_fast_claim",
+      "patterns": [
+        "1 gw",
+        "1000 mw",
+        "gigawatt"
+      ],
+      "effects": {
+        "low": 0.12,
+        "mid": -0.04,
+        "high": -0.08
+      },
+      "comment": "Very large capacity claims need phasing and proof."
+    }
+  ]
+}

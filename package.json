@@ -1,0 +1,51 @@
+{
+  "name": "dc-capacity-scenario-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Data center IT-load GW scenario dashboard for announced versus available capacity, 2026-2030.",
+  "scripts": {
+    "dev": "concurrently -n server,client -c magenta,cyan \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:client": "vite",
+    "dev:server": "tsx server/index.ts",
+    "build": "tsc -p tsconfig.json && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "extract:central-europe": "tsx scripts/extract-central-europe-from-xlsx.ts",
+    "validate:data": "tsx scripts/validate-data.ts",
+    "build:data": "tsx scripts/build-all-region-dataset.ts"
+  },
+  "dependencies": {
+    "@mozilla/readability": "latest",
+    "@telekom/scale-components": "next",
+    "@telekom/scale-components-react": "next",
+    "cors": "latest",
+    "express": "latest",
+    "gray-matter": "latest",
+    "jsdom": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-markdown": "latest",
+    "react-router-dom": "latest",
+    "recharts": "latest",
+    "xlsx": "latest",
+    "zod": "latest",
+    "zustand": "latest"
+  },
+  "devDependencies": {
+    "@types/cors": "latest",
+    "@types/express": "latest",
+    "@types/jsdom": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "concurrently": "latest",
+    "tsx": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "vitest": "latest"
+  }
+}

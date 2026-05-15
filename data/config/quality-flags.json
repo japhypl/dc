@@ -1,0 +1,29 @@
+{
+  "flags": [
+    {
+      "id": "Direct",
+      "label": "Direct",
+      "description": "Source value used directly."
+    },
+    {
+      "id": "Converted",
+      "label": "Converted",
+      "description": "Source value converted to the dashboard unit."
+    },
+    {
+      "id": "Estimated",
+      "label": "Estimated",
+      "description": "Model assumption applied."
+    },
+    {
+      "id": "External",
+      "label": "External",
+      "description": "External source input required."
+    },
+    {
+      "id": "?",
+      "label": "?",
+      "description": "Capacity definition or evidence is unclear."
+    }
+  ]
+}

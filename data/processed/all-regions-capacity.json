@@ -1,0 +1,17 @@
+{
+  "regions": [
+    {
+      "file": "data/processed/us-capacity.json"
+    },
+    {
+      "file": "data/processed/western-europe-capacity.json"
+    },
+    {
+      "file": "data/processed/germany-capacity.json"
+    },
+    {
+      "file": "data/processed/central-europe-capacity.json"
+    }
+  ],
+  "comments": "Aggregated at runtime by the scenario engine. This index exists for validation and data lineage."
+}

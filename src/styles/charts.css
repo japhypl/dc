@@ -1,0 +1,11 @@
+.recharts-cartesian-axis-tick text,
+.recharts-legend-item-text,
+.recharts-tooltip-label,
+.recharts-default-tooltip {
+  fill: var(--app-text);
+  color: var(--app-text);
+}
+.recharts-default-tooltip {
+  background: var(--app-surface-2) !important;
+  border: 1px solid var(--app-border) !important;
+}
