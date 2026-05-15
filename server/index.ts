@@ -1,24 +1,46 @@
 import express from 'express';
 import cors from 'cors';
+import session from 'express-session';
 import path from 'node:path';
+import { loginRouter } from './routes/login';
+import { requireAuth } from './middleware/auth';
 import { capacityRouter } from './routes/capacity';
 import { assumptionsRouter } from './routes/assumptions';
 import { sourcesRouter } from './routes/sources';
 import { analyzeUrlRouter } from './routes/analyzeUrl';
 
 const app = express();
-const port = Number(process.env.PORT ?? 8787);
+const port = Number(process.env.API_PORT ?? process.env.PORT ?? 8787);
 const isProduction = process.env.NODE_ENV === 'production';
 
+if (isProduction) {
+  app.set('trust proxy', 1);
+}
+
 if (!isProduction) {
-  app.use(cors());
+  app.use(cors({ origin: true, credentials: true }));
 }
 
 app.use(express.json({ limit: '2mb' }));
 
+app.use(session({
+  secret: process.env.SESSION_SECRET ?? 'dev-secret-change-in-production',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: isProduction,
+    httpOnly: true,
+    sameSite: 'lax',
+    maxAge: 24 * 60 * 60 * 1000,
+  },
+}));
+
 app.get('/api/health', (_req, res) => {
   res.json({ ok: true, service: 'dc-capacity-scenario-dashboard', version: '0.1.0' });
 });
+
+app.use('/api', loginRouter);
+app.use(requireAuth);
 
 app.use('/api/capacity', capacityRouter);
 app.use('/api/assumptions', assumptionsRouter);

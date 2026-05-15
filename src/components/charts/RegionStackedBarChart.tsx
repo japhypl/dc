@@ -14,9 +14,9 @@ export function RegionStackedBarChart({ rows, year = '2030f' }: { rows: Scenario
           <XAxis dataKey="region" />
           <YAxis unit=" GW" />
           <Tooltip />
-          <Bar dataKey="Low" fill="var(--chart-low)" />
-          <Bar dataKey="Mid" fill="var(--chart-mid)" />
           <Bar dataKey="High" fill="var(--chart-high)" />
+          <Bar dataKey="Mid" fill="var(--chart-mid)" />
+          <Bar dataKey="Low" fill="var(--chart-low)" />
         </BarChart>
       </ResponsiveContainer>
     </div>

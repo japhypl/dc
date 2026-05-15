@@ -14,9 +14,9 @@ export function ScenarioFanChart({ rows, regionName = 'Total' }: { rows: Scenari
           <XAxis dataKey="year" />
           <YAxis unit=" GW" />
           <Tooltip />
-          <Line type="monotone" dataKey="Low" stroke="var(--chart-low)" strokeWidth={2} connectNulls />
-          <Line type="monotone" dataKey="Mid" stroke="var(--chart-mid)" strokeWidth={2} connectNulls />
           <Line type="monotone" dataKey="High" stroke="var(--chart-high)" strokeWidth={2} connectNulls />
+          <Line type="monotone" dataKey="Mid" stroke="var(--chart-mid)" strokeWidth={2} connectNulls />
+          <Line type="monotone" dataKey="Low" stroke="var(--chart-low)" strokeWidth={2} connectNulls />
         </LineChart>
       </ResponsiveContainer>
     </div>
