@@ -13,10 +13,10 @@ export function RegionStackedBarChart({ rows, year = '2030f' }: { rows: Scenario
         <BarChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
           <XAxis dataKey="region" />
           <YAxis unit=" GW" />
-          <Tooltip />
-          <Bar dataKey="Low" fill="var(--chart-low)" />
-          <Bar dataKey="Mid" fill="var(--chart-mid)" />
+          <Tooltip itemSorter={(a) => ({ High: 0, Mid: 1, Low: 2 }[a.dataKey as string] ?? 3)} />
           <Bar dataKey="High" fill="var(--chart-high)" />
+          <Bar dataKey="Mid" fill="var(--chart-mid)" />
+          <Bar dataKey="Low" fill="var(--chart-low)" />
         </BarChart>
       </ResponsiveContainer>
     </div>

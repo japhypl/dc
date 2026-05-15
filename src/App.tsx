@@ -1,5 +1,8 @@
+import { useEffect, useState } from 'react';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { AppShell } from './components/layout/AppShell';
+import { LoginPage } from './components/LoginPage';
+import './components/LoginPage.css';
 import { OverviewPage } from './pages/OverviewPage';
 import { RegionDetailPage } from './pages/RegionDetailPage';
 import { AssumptionsPage } from './pages/AssumptionsPage';
@@ -8,6 +11,21 @@ import { UrlAnalyzerPage } from './pages/UrlAnalyzerPage';
 import { MethodologyPage } from './pages/MethodologyPage';
 
 export default function App() {
+  const [auth, setAuth] = useState<'loading' | 'yes' | 'no'>('loading');
+
+  useEffect(() => {
+    fetch('/api/auth-status', { credentials: 'include' })
+      .then((r) => r.json())
+      .then((d) => setAuth(d.authenticated ? 'yes' : 'no'))
+      .catch(() => setAuth('no'));
+  }, []);
+
+  if (auth === 'loading') return null;
+
+  if (auth === 'no') {
+    return <LoginPage onSuccess={() => setAuth('yes')} />;
+  }
+
   return (
     <HashRouter>
       <AppShell>

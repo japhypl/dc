@@ -48,7 +48,14 @@
   padding: 0 1.6rem;
 }
 .header-title { display: flex; align-items: center; gap: 0.8rem; }
+.header-actions { display: flex; align-items: center; gap: 1rem; }
 .header-meta, .eyebrow, .muted-text { color: var(--app-muted); }
+.logout-button {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0.4rem; border: 1px solid var(--app-border); border-radius: 4px;
+  background: transparent; color: var(--app-muted); cursor: pointer;
+}
+.logout-button:hover { color: var(--app-text); border-color: var(--app-text); }
 .eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.74rem; margin-bottom: 0.25rem; }
 .page-frame { padding: 1.5rem; }
 .page-container { display: grid; gap: 1.4rem; }
