@@ -13,7 +13,7 @@ export function ScenarioFanChart({ rows, regionName = 'Total' }: { rows: Scenari
         <LineChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
           <XAxis dataKey="year" />
           <YAxis unit=" GW" />
-          <Tooltip />
+          <Tooltip itemSorter={(a) => ({ High: 0, Mid: 1, Low: 2 }[a.dataKey as string] ?? 3)} />
           <Line type="monotone" dataKey="High" stroke="var(--chart-high)" strokeWidth={2} connectNulls />
           <Line type="monotone" dataKey="Mid" stroke="var(--chart-mid)" strokeWidth={2} connectNulls />
           <Line type="monotone" dataKey="Low" stroke="var(--chart-low)" strokeWidth={2} connectNulls />
