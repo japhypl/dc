@@ -1,1 +1,0 @@
-import{o as e}from"./index-CwyZArIO.js";var t=(t,n)=>{if(typeof t==`function`)return e(`span`,{innerHTML:t(),class:n});if(typeof t==`string`)return e(`scale-icon`,{name:t});let r=t.tag;return e(r,Object.assign({},t.attributes))};export{t};
