@@ -2,7 +2,8 @@
   "regionSource": {
     "regionId": "western-europe",
     "regionName": "Western Europe",
-    "sourceStatus": "external_input_required",
+    "sourceStatus": "populated",
+    "sourcePriority": "composite_external_sources",
     "baselineYear": "2025e",
     "years": [
       "2025e",
@@ -12,31 +13,34 @@
       "2029f",
       "2030f"
     ],
-    "capacityDefinition": "IT load GW",
+    "capacityDefinition": "Facility power GW, derived from European total minus Germany minus Central Europe (?)",
     "baseForecastGw": {
-      "2025e": null,
-      "2026f": null,
-      "2027f": null,
-      "2028f": null,
-      "2029f": null,
-      "2030f": null
+      "2025e": 10.0,
+      "2026f": 12.0,
+      "2027f": 14.0,
+      "2028f": 16.5,
+      "2029f": 19.0,
+      "2030f": 21.0
     },
     "highForecastGw": {
-      "2025e": null,
-      "2026f": null,
-      "2027f": null,
-      "2028f": null,
-      "2029f": null,
-      "2030f": null
+      "2025e": 10.0,
+      "2026f": 13.0,
+      "2027f": 16.0,
+      "2028f": 20.0,
+      "2029f": 24.0,
+      "2030f": 28.0
     },
     "qualityFlags": [
       "External",
+      "Composite",
+      "Interpolated",
+      "Derived",
       "?"
     ],
     "sourceFiles": [
       "docs/sources/western-europe.md"
     ],
-    "comments": "External source input required. Excludes Germany and Central Europe countries from the uploaded workbook."
+    "comments": "Derived from European totals minus Germany and Central Europe. S&P Global reports Europe total at 18.7 GW (end 2024, including Germany/CE), growing to 36 GW by 2030. IEA projects +70% installed capacity by 2030 vs 2024. Mid forecast assumes Western Europe (UK, Ireland, France, Netherlands, Nordics, Benelux, Switzerland) at ~10 GW in 2025, growing to ~21 GW by 2030. High forecast reflects EU AI Continent Action Plan target of tripling capacity and faster Nordic expansion (110% demand growth by 2030 per DCD). Key sub-markets: UK (2.6 GW in 2025, up to 4.75 GW by 2030), France (1.72 GW), Nordics (projected >2.8 GW by 2030). Grid moratoriums in FLAP hubs (7-13 year wait) redirect growth to Nordics and southern Europe."
   },
   "countrySources": []
 }

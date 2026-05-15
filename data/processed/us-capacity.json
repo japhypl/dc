@@ -2,7 +2,8 @@
   "regionSource": {
     "regionId": "us",
     "regionName": "US",
-    "sourceStatus": "external_input_required",
+    "sourceStatus": "populated",
+    "sourcePriority": "composite_external_sources",
     "baselineYear": "2025e",
     "years": [
       "2025e",
@@ -12,31 +13,33 @@
       "2029f",
       "2030f"
     ],
-    "capacityDefinition": "IT load GW",
+    "capacityDefinition": "Facility power GW, mixed source definitions (?)",
     "baseForecastGw": {
-      "2025e": null,
-      "2026f": null,
-      "2027f": null,
-      "2028f": null,
-      "2029f": null,
-      "2030f": null
+      "2025e": 30.0,
+      "2026f": 48.0,
+      "2027f": 68.0,
+      "2028f": 88.0,
+      "2029f": 105.0,
+      "2030f": 122.0
     },
     "highForecastGw": {
-      "2025e": null,
-      "2026f": null,
-      "2027f": null,
-      "2028f": null,
-      "2029f": null,
-      "2030f": null
+      "2025e": 30.0,
+      "2026f": 55.0,
+      "2027f": 76.0,
+      "2028f": 108.0,
+      "2029f": 120.0,
+      "2030f": 134.4
     },
     "qualityFlags": [
       "External",
+      "Composite",
+      "Interpolated",
       "?"
     ],
     "sourceFiles": [
       "docs/sources/us.md"
     ],
-    "comments": "External source input required. The app includes this region in all views, but values remain null until populated."
+    "comments": "Mid forecast based on Goldman Sachs base case (122 GW by 2030, 17% CAGR 2025-2028). High forecast based on S&P Global (134.4 GW by 2030). 2025e baseline of 30 GW from Goldman Sachs/McKinsey consensus. Intermediate years are interpolated from endpoint targets and reported annual additions (~18-31 GW/year). Capacity definition is mixed across sources (facility power, grid demand) and flagged with ?. Sources are public summaries, not raw data."
   },
   "countrySources": []
 }

@@ -1,4 +1,3 @@
-import { Pie, PieChart, ResponsiveContainer, Tooltip, Cell } from 'recharts';
 import { PageContainer } from '../components/layout/PageContainer';
 import { UrlAnalyzerForm } from '../components/forms/UrlAnalyzerForm';
 import { ErrorState } from '../components/common/ErrorState';
@@ -9,10 +8,28 @@ import { formatPercent } from '../utils/formatPercent';
 
 export function UrlAnalyzerPage() {
   const { data, loading, error, run } = useUrlAnalysis();
-  const chartData = data ? [
-    { name: 'Low', value: data.scenarioLikelihood.low },
-    { name: 'Mid', value: data.scenarioLikelihood.mid },
-    { name: 'High', value: data.scenarioLikelihood.high }
+  const currentYear = new Date().getFullYear();
+  const targetYear = data?.suggestedInput.yearY ?? 2030;
+  const startYear = data?.suggestedInput.yearX ?? currentYear;
+  const yearsToTarget = Math.max(1, targetYear - startYear);
+  const baseAnnualGw = data?.suggestedInput.capacityGw ?? null;
+  const annualizedGw = baseAnnualGw === null ? null : baseAnnualGw / yearsToTarget;
+  const scenarioCards = data ? [
+    {
+      name: 'Low',
+      likelihood: data.scenarioLikelihood.low,
+      annualGw: annualizedGw === null ? null : annualizedGw * data.scenarioLikelihood.low
+    },
+    {
+      name: 'Mid',
+      likelihood: data.scenarioLikelihood.mid,
+      annualGw: annualizedGw === null ? null : annualizedGw * data.scenarioLikelihood.mid
+    },
+    {
+      name: 'High',
+      likelihood: data.scenarioLikelihood.high,
+      annualGw: annualizedGw === null ? null : annualizedGw * data.scenarioLikelihood.high
+    }
   ] : [];
 
   return (
@@ -32,18 +49,20 @@ export function UrlAnalyzerPage() {
           <article className="card">
             <h3>{data.title}</h3>
             <div className="quality-row">{data.flags.map((flag) => <Badge key={flag} tone={flag === '?' ? 'warning' : 'default'}>{flag}</Badge>)}</div>
-            <dl className="metric-grid compact">
-              <div><dt>Low</dt><dd>{formatPercent(data.scenarioLikelihood.low)}</dd></div>
-              <div><dt>Mid</dt><dd>{formatPercent(data.scenarioLikelihood.mid)}</dd></div>
-              <div><dt>High</dt><dd>{formatPercent(data.scenarioLikelihood.high)}</dd></div>
-            </dl>
-            <ResponsiveContainer width="100%" height={220}>
-              <PieChart>
-                <Pie data={chartData} dataKey="value" nameKey="name" outerRadius={80} label />
-                {chartData.map((entry) => <Cell key={entry.name} fill={`var(--chart-${entry.name.toLowerCase()})`} />)}
-                <Tooltip formatter={(value) => formatPercent(Number(value))} />
-              </PieChart>
-            </ResponsiveContainer>
+            <div className="scenario-cards">
+              {scenarioCards.map((scenario) => (
+                <div className="scenario-card" key={scenario.name}>
+                  <div className="scenario-card-header">
+                    <h4>{scenario.name}</h4>
+                    <span className="scenario-chip">to {targetYear}</span>
+                  </div>
+                  <dl className="metric-grid compact scenario-metrics">
+                    <div><dt>Likelihood</dt><dd>{formatPercent(scenario.likelihood)}</dd></div>
+                    <div><dt>GW/yr</dt><dd>{formatGw(scenario.annualGw)}</dd></div>
+                  </dl>
+                </div>
+              ))}
+            </div>
           </article>
 
           <article className="card">

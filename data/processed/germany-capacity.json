@@ -2,7 +2,8 @@
   "regionSource": {
     "regionId": "germany",
     "regionName": "Germany",
-    "sourceStatus": "external_input_required",
+    "sourceStatus": "populated",
+    "sourcePriority": "composite_external_sources",
     "baselineYear": "2025e",
     "years": [
       "2025e",
@@ -12,31 +13,33 @@
       "2029f",
       "2030f"
     ],
-    "capacityDefinition": "IT load GW",
+    "capacityDefinition": "Mixed: colocation IT load and total facility power GW (?)",
     "baseForecastGw": {
-      "2025e": null,
-      "2026f": null,
-      "2027f": null,
-      "2028f": null,
-      "2029f": null,
-      "2030f": null
+      "2025e": 1.4,
+      "2026f": 1.8,
+      "2027f": 2.2,
+      "2028f": 2.6,
+      "2029f": 3.0,
+      "2030f": 3.3
     },
     "highForecastGw": {
-      "2025e": null,
-      "2026f": null,
-      "2027f": null,
-      "2028f": null,
-      "2029f": null,
-      "2030f": null
+      "2025e": 1.4,
+      "2026f": 2.0,
+      "2027f": 2.5,
+      "2028f": 3.0,
+      "2029f": 3.5,
+      "2030f": 4.8
     },
     "qualityFlags": [
       "External",
+      "Composite",
+      "Interpolated",
       "?"
     ],
     "sourceFiles": [
       "docs/sources/germany.md"
     ],
-    "comments": "External source input required. Kept separate from Western Europe."
+    "comments": "Mid forecast: Prime East colocation IT load trajectory (1.3 GW in 2024 to 3.3 GW by 2029-2030). High forecast: Borderstep/ResearchAndMarkets total capacity (4.8 GW by 2030, includes hyperscale AI/HPC expansion of up to 2,000 MW). 2025e baseline from GlobeNewsWire DCCP report (>1,400 MW mid-2025). Frankfurt accounts for >60% of market. Grid connection delays of 7+ years constrain the low scenario. Intermediate years interpolated. Germany's Energy Efficiency Act requires PUE 1.3 by 2030."
   },
   "countrySources": []
 }

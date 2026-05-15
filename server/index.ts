@@ -5,6 +5,7 @@ import { capacityRouter } from './routes/capacity';
 import { assumptionsRouter } from './routes/assumptions';
 import { sourcesRouter } from './routes/sources';
 import { analyzeUrlRouter } from './routes/analyzeUrl';
+import { HttpError } from './utils/httpError';
 
 const app = express();
 const port = Number(process.env.PORT ?? 8787);
@@ -35,7 +36,10 @@ if (isProduction) {
 
 app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error(err);
-  res.status(500).json({ error: 'internal_server_error', message: err instanceof Error ? err.message : 'Unknown error' });
+  const status = err instanceof HttpError ? err.status : 500;
+  const message = err instanceof Error ? err.message : 'Unknown error';
+  const code = err instanceof HttpError ? err.code : 'internal_server_error';
+  res.status(status).json({ error: code, message });
 });
 
 app.listen(port, () => {
