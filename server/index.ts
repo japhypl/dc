@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'node:path';
 import { capacityRouter } from './routes/capacity';
 import { assumptionsRouter } from './routes/assumptions';
 import { sourcesRouter } from './routes/sources';
@@ -7,8 +8,12 @@ import { analyzeUrlRouter } from './routes/analyzeUrl';
 
 const app = express();
 const port = Number(process.env.PORT ?? 8787);
+const isProduction = process.env.NODE_ENV === 'production';
 
-app.use(cors());
+if (!isProduction) {
+  app.use(cors());
+}
+
 app.use(express.json({ limit: '2mb' }));
 
 app.get('/api/health', (_req, res) => {
@@ -19,6 +24,14 @@ app.use('/api/capacity', capacityRouter);
 app.use('/api/assumptions', assumptionsRouter);
 app.use('/api/sources', sourcesRouter);
 app.use('/api/analyze-url', analyzeUrlRouter);
+
+if (isProduction) {
+  const distDir = path.join(process.cwd(), 'dist');
+  app.use(express.static(distDir));
+  app.get('{*path}', (_req, res) => {
+    res.sendFile(path.join(distDir, 'index.html'));
+  });
+}
 
 app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error(err);
